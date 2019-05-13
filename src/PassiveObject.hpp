@@ -23,6 +23,7 @@
 
 #include <Eigen/Dense>
 #include "Collider.hpp"
+#include "RayMultiHit.hpp"
 #include "MCL/TetMesh.hpp"
 #include "MCL/TriangleMesh.hpp"
 #include "MCL/BVH.hpp"
@@ -106,15 +107,13 @@ public:
 	} // end signed distance
 };
 
-
-/*
-class PassiveMesh : public PassiveCollision {
+class PassiveTriMesh : public PassiveCollision {
 public:
 	typedef Eigen::Matrix<double,3,1> Vec3;
 	mcl::bvh::AABBTree<float,3> m_tree;
 
 	std::shared_ptr<mcl::TriangleMesh> mesh;
-	PassiveMesh( std::shared_ptr<mcl::TriangleMesh> mesh_ ) : mesh(mesh_){ update_bvh(); }
+	PassiveTriMesh( std::shared_ptr<mcl::TriangleMesh> mesh_ ) : mesh(mesh_){ update_bvh(); }
 
 	void update_bvh(){
 		m_tree.init( &mesh->faces[0][0], &mesh->vertices[0][0], mesh->faces.size() );
@@ -146,8 +145,6 @@ public:
 
 	} // end signed distance
 };
-*/
-
 
 } // end of namespace admm
 
